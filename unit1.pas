@@ -6,11 +6,11 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, ExtCtrls,
-  Buttons, Spin;
+  Buttons, Spin, Math;
 
 type
   Elemen=record
-  x,y: Integer;
+  x,y, y0, y1: Integer;
   end;
 
   { TForm1 }
@@ -19,7 +19,6 @@ type
     Button1: TButton;
     buttonbelahketupat: TSpeedButton;
     buttonhapus1: TSpeedButton;
-    buttonkiriatas: TSpeedButton;
     buttonlayang2: TSpeedButton;
     buttonpensil1: TSpeedButton;
     buttonwarna1: TSpeedButton;
@@ -30,6 +29,9 @@ type
     OpenDialog1: TOpenDialog;
     SaveDialog1: TSaveDialog;
     buttonkiri: TSpeedButton;
+    SpeedButton1: TSpeedButton;
+    SpeedButton2: TSpeedButton;
+    SpinEdit1: TSpinEdit;
     vertikalbutton: TButton;
     ColorDialog1: TColorDialog;
     cbpen: TComboBox;
@@ -86,6 +88,9 @@ type
     procedure openprojectClick(Sender: TObject);
     procedure saveprojectClick(Sender: TObject);
     procedure Shape1ChangeBounds(Sender: TObject);
+    procedure SpeedButton1Click(Sender: TObject);
+    procedure SpeedButton2Click(Sender: TObject);
+    procedure SpinEdit1Change(Sender: TObject);
     procedure tekswidthChange(Sender: TObject);
     procedure ToggleBox1Change(Sender: TObject);
     procedure vertikalbuttonClick(Sender: TObject);
@@ -144,7 +149,7 @@ var
   mc: elemen;
   UkuranObject,scale,i,j,a,b,x0,y0: integer;
   warnai: TColor;
-
+  x01,y01:Integer;
 
 implementation
 
@@ -368,11 +373,12 @@ end;
 
 procedure TForm1.horizontalbuttonClick(Sender: TObject);
 begin
+  j:=SpinEdit1.Value;
   if UkuranObject=3 then
   begin
-       Objek[1].x := Objek[1].x-10;
-       Objek[2].x := Objek[2].x+10;
-       Objek[3].x := Objek[3].x-10;
+       Objek[1].x := round(Objek[1].x-(0.5*Tan(j))*(Objek[3].y-Objek[1].y));
+       Objek[2].x := round(Objek[2].x+(0.5*Tan(j))*(Objek[3].y-Objek[1].y));
+       Objek[3].x := round(Objek[3].x-(0.5*Tan(j))*(Objek[3].y-Objek[1].y));
        FormActivate(Sender);
        movecolor(Sender);
        gambar();
@@ -381,10 +387,10 @@ begin
   end;
   if UkuranObject=4 then
   begin
-       Objek[1].x := Objek[1].x+10;
-       Objek[2].x := Objek[2].x+10;
-       Objek[3].x := Objek[3].x-10;
-       Objek[4].x := Objek[4].x-10;
+       Objek[1].x := round(Objek[1].x+ (0.5*Tan(j))*(Objek[3].y-Objek[2].y));
+       Objek[2].x := round(Objek[2].x+ (0.5*Tan(j))*(Objek[3].y-Objek[2].y));
+       Objek[3].x := round(Objek[3].x- (0.5*Tan(j))*(Objek[3].y-Objek[2].y));
+       Objek[4].x := round(Objek[4].x- (0.5*Tan(j))*(Objek[3].y-Objek[2].y));
        FormActivate(Sender);
        movecolor(Sender);
        gambar();
@@ -395,6 +401,7 @@ end;
 
 procedure TForm1.vertikalbuttonClick(Sender: TObject);
 begin
+  j:=SpinEdit1.Value;
   if UkuranObject=3 then
   begin
        Objek[1].y := Objek[1].y-10;
@@ -408,10 +415,8 @@ begin
   end;
   if UkuranObject=4 then
   begin
-       Objek[1].y := Objek[1].y-10;
-       Objek[2].y := Objek[2].y+10;
-       Objek[3].y := Objek[3].y+10;
-       Objek[4].y := Objek[4].y-10;
+       Objek[2].y := round(Objek[2].y + Tan(j) * (Objek[1].x - Objek[2].x));
+       Objek[3].y := round(Objek[3].y + Tan(j) * (Objek[1].x - Objek[2].x));
        FormActivate(Sender);
        movecolor(Sender);
        gambar();
@@ -437,6 +442,30 @@ begin
 end;
 
 procedure TForm1.Shape1ChangeBounds(Sender: TObject);
+begin
+
+end;
+
+procedure TForm1.SpeedButton1Click(Sender: TObject);
+begin
+  for i:=1 to UkuranObject do
+  begin
+      Objek[i].x := Objek[i].x-teksgeser.Value;
+      Objek[i].y := Objek[i].y-teksgeser.Value;
+  end;
+  movecolor(Sender);
+  hapusobjek();
+  gambar();
+  if warna=true then
+     FloodFill(mc.x,mc.y,ColorDialog1.Color,Image1.Canvas.Pixels[mc.x,mc.y]);
+end;
+
+procedure TForm1.SpeedButton2Click(Sender: TObject);
+begin
+  tool:='garis';
+end;
+
+procedure TForm1.SpinEdit1Change(Sender: TObject);
 begin
 
 end;
@@ -537,10 +566,16 @@ procedure TForm1.Image1MouseDown(Sender: TObject; Button: TMouseButton;
 begin
   x0:=X;
   y0:=Y;
+  Image1.Canvas.MoveTo(340,405);
   if (tool='pensil') or (tool='penghapus') then
   begin
       Image1.Canvas.MoveTo(X,Y);
       klik:=true;
+  end;
+  if (tool='garis') then
+  begin
+    x01:=X;
+    y01:=Y;
   end;
   if tool='warnai' then
   begin
@@ -582,6 +617,12 @@ begin
   klik:=false;
   begin
 
+  if (tool='garis') then
+  begin
+    penstyle();
+    Image1.Canvas.MoveTo(x01,y01);
+    Image1.Canvas.LineTo(X,Y);
+  end;
   if tool='kotak' then
   begin
     objek[1].x:=x0;  objek[1].y:=y0;

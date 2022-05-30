@@ -1,11 +1,11 @@
 object Form1: TForm1
-  Left = 637
-  Height = 795
-  Top = 91
+  Left = 882
+  Height = 834
+  Top = 58
   Width = 841
   BorderStyle = bsSingle
   Caption = 'Proyek Grafkom'
-  ClientHeight = 795
+  ClientHeight = 834
   ClientWidth = 841
   Color = clMoneyGreen
   OnActivate = FormActivate
@@ -15,10 +15,10 @@ object Form1: TForm1
   object GroupBox7: TGroupBox
     Left = 8
     Height = 64
-    Top = 648
-    Width = 90
+    Top = 696
+    Width = 130
     ClientHeight = 44
-    ClientWidth = 86
+    ClientWidth = 126
     TabOrder = 7
     object horizontalbutton: TButton
       Left = 6
@@ -38,11 +38,22 @@ object Form1: TForm1
       OnClick = vertikalbuttonClick
       TabOrder = 1
     end
+    object SpinEdit1: TSpinEdit
+      Left = 88
+      Height = 23
+      Top = 8
+      Width = 38
+      MaxValue = 30
+      MinValue = 3
+      OnChange = SpinEdit1Change
+      TabOrder = 2
+      Value = 10
+    end
   end
   object GroupBox1: TGroupBox
     Left = 8
     Height = 97
-    Top = 192
+    Top = 240
     Width = 98
     Caption = 'Shapes'
     ClientHeight = 77
@@ -444,7 +455,7 @@ object Form1: TForm1
   object GroupBox2: TGroupBox
     Left = 8
     Height = 120
-    Top = 416
+    Top = 464
     Width = 128
     Caption = 'Translation'
     ClientHeight = 100
@@ -706,58 +717,31 @@ object Form1: TForm1
       }
       OnClick = buttonkiriClick
     end
-    object buttonkiriatas: TSpeedButton
-      Left = 272
-      Height = 32
-      Top = 24
-      Width = 32
-      Anchors = [akTop, akLeft, akRight, akBottom]
-      Enabled = False
-      Glyph.Data = {
-        36030000424D3603000000000000360000002800000010000000100000000100
-        18000000000000030000C40E0000C40E00000000000000000000FFFFFFFFFFFF
-        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-        FFF7F7F74949496A6A6AFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-        FFFFFFFFFFFFFFFFFFFFFFFFFFFFF7F7F74646460000004A4A4AFFFFFFFFFFFF
-        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF8F8F84C4C
-        4C000000454545F6F6F6FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-        FFFFFFFFFFFFFFFFF8F8F84C4C4C000000454545F6F6F6FFFFFFFFFFFFFFFFFF
-        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF8F8F84C4C4C0000004545
-        45F6F6F6FFFFFFFFFFFF6363638A8A8AFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-        FFFFF7F7F7464646000000464646F7F7F7FFFFFFFFFFFFFFFFFF000000393939
-        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF8F8F84C4C4C000000454545F6F6F6FFFF
-        FFFFFFFFFFFFFFFFFFFF000000393939FFFFFFFFFFFFFFFFFFFFFFFFF8F8F84C
-        4C4C000000454545F6F6F6FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000000393939
-        FFFFFFFFFFFFFFFFFFF8F8F84C4C4C000000454545F6F6F6FFFFFFFFFFFFFFFF
-        FFFFFFFFFFFFFFFFFFFF000000393939FFFFFFFFFFFFF8F8F84C4C4C00000045
-        4545F6F6F6FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000000393939
-        FFFFFFF8F8F84C4C4C000000454545F6F6F6FFFFFFFFFFFFFFFFFFFFFFFFFFFF
-        FFFFFFFFFFFFFFFFFFFF000000393939F8F8F84C4C4C000000454545F6F6F6FF
-        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000000303030
-        464646000000464646F7F7F7FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-        FFFFFFFFFFFFFFFFFFFF000000000000000000454545F6F6F6FFFFFFFFFFFFFF
-        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF000000000000
-        0000002B2B2B333333333333333333333333333333333333888888FFFFFFFFFF
-        FFFFFFFFFFFFFFFFFFFF0E0E0E00000000000000000000000000000000000000
-        0000000000000000636363FFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-      }
-      Visible = False
-      OnClick = buttonkiriatasClick
-    end
     object Button1: TButton
+      Left = 376
+      Height = 32
+      Top = -48
+      Width = 32
+      Caption = '1'
+      Enabled = False
+      OnClick = Button1Click
+      TabOrder = 1
+      Visible = False
+    end
+    object SpeedButton1: TSpeedButton
       Left = 8
       Height = 32
       Top = 0
       Width = 32
-      Caption = '1'
-      OnClick = Button1Click
-      TabOrder = 1
+      Images = ImageList1
+      ImageIndex = 0
+      OnClick = SpeedButton1Click
     end
   end
   object Rotate: TGroupBox
     Left = 8
     Height = 119
-    Top = 288
+    Top = 336
     Width = 128
     Caption = 'Rotate'
     ClientHeight = 99
@@ -943,7 +927,7 @@ object Form1: TForm1
   object GroupBox5: TGroupBox
     Left = 50
     Height = 57
-    Top = 128
+    Top = 176
     Width = 88
     Caption = 'Pen Styles'
     ClientHeight = 37
@@ -971,7 +955,7 @@ object Form1: TForm1
   object GroupBox6: TGroupBox
     Left = 8
     Height = 57
-    Top = 128
+    Top = 176
     Width = 48
     Caption = 'Width'
     ClientHeight = 37
@@ -992,7 +976,7 @@ object Form1: TForm1
   object Label2: TLabel
     Left = 8
     Height = 20
-    Top = 720
+    Top = 768
     Width = 7
     Caption = 'x'
     Font.CharSet = ANSI_CHARSET
@@ -1007,7 +991,7 @@ object Form1: TForm1
   object Label3: TLabel
     Left = 8
     Height = 20
-    Top = 752
+    Top = 800
     Width = 7
     Caption = 'y'
     Font.CharSet = ANSI_CHARSET
@@ -1136,7 +1120,7 @@ object Form1: TForm1
   end
   object Image1: TImage
     Left = 144
-    Height = 768
+    Height = 810
     Top = 16
     Width = 680
     Anchors = [akTop, akLeft, akRight, akBottom]
@@ -1151,25 +1135,25 @@ object Form1: TForm1
   object Edit1: TEdit
     Left = 24
     Height = 23
-    Top = 720
+    Top = 768
     Width = 53
     TabOrder = 9
   end
   object Edit2: TEdit
     Left = 24
     Height = 23
-    Top = 752
+    Top = 800
     Width = 54
     TabOrder = 10
   end
   object GroupBox9: TGroupBox
     Left = 6
-    Height = 56
+    Height = 96
     Top = 64
-    Width = 112
+    Width = 96
     Caption = 'Tools'
-    ClientHeight = 36
-    ClientWidth = 108
+    ClientHeight = 76
+    ClientWidth = 92
     TabOrder = 11
     OnClick = GroupBox9Click
     object buttonpensil1: TSpeedButton
@@ -1238,7 +1222,7 @@ object Form1: TForm1
       OnClick = buttonpensilClick
     end
     object buttonhapus1: TSpeedButton
-      Left = 40
+      Left = 48
       Height = 32
       Top = 1
       Width = 32
@@ -1273,9 +1257,9 @@ object Form1: TForm1
       OnClick = buttonhapusClick
     end
     object buttonwarna1: TSpeedButton
-      Left = 72
+      Left = 10
       Height = 32
-      Top = 0
+      Top = 40
       Width = 32
       Glyph.Data = {
         F6060000424DF606000000000000360000002800000018000000180000000100
@@ -1337,11 +1321,20 @@ object Form1: TForm1
       }
       OnClick = buttonwarnaClick
     end
+    object SpeedButton2: TSpeedButton
+      Left = 48
+      Height = 32
+      Top = 40
+      Width = 32
+      Images = ImageList1
+      ImageIndex = 1
+      OnClick = SpeedButton2Click
+    end
   end
   object GroupBox3: TGroupBox
     Left = 8
     Height = 64
-    Top = 592
+    Top = 640
     Width = 88
     ClientHeight = 44
     ClientWidth = 84
@@ -1420,7 +1413,7 @@ object Form1: TForm1
   object GroupBox4: TGroupBox
     Left = 8
     Height = 57
-    Top = 544
+    Top = 592
     Width = 88
     Caption = 'Mirror'
     ClientHeight = 37
@@ -1560,7 +1553,7 @@ object Form1: TForm1
   object Label4: TLabel
     Left = 16
     Height = 15
-    Top = 600
+    Top = 648
     Width = 38
     Caption = 'Scaling'
     ParentColor = False
@@ -1569,7 +1562,7 @@ object Form1: TForm1
   object Label5: TLabel
     Left = 16
     Height = 15
-    Top = 656
+    Top = 704
     Width = 46
     Caption = 'Shearing'
     ParentColor = False
@@ -1612,5 +1605,17 @@ object Form1: TForm1
   object ImageList1: TImageList
     Left = 688
     Top = 312
+    Bitmap = {
+      4C7A020000001000000010000000130100000000000078DACD93318A83401486
+      27584AD28AA08D7890F41E42D0266C92D256062F61E1116C6CED7200D12B4860
+      6FB06171545E668206431AE70DCBE6C18F5A7CFFFCEFBDB1EB3A3A8E23C1A853
+      60FF424992D0388EDF5414C5AA9C9AA60121040CC300D3349F8AA208D6F0BAAE
+      836DDB10040130C6A467635916A4690A8EE380E779D0F73D95E5B32CA355555D
+      84471886300CC35E9617EF22BFEFFB0F8FB53996FCEC21D34B5996B46DDB97BC
+      732F62A632BD2CB5ECA5AEEB0BC643E4705DF7E181BD9F4DD3D03CCF3FEA9FF9
+      87DA70ED14D823D737C263667FB84ED337863D4BB2A2BEB86E0AEC2F22B3A803
+      179B588238974D4FD9392F336376745360313B9A3363F72BEEE2753A7F83BCDB
+      5B05165D772054E23A
+    }
   end
 end
