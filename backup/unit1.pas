@@ -29,6 +29,7 @@ type
     OpenDialog1: TOpenDialog;
     SaveDialog1: TSaveDialog;
     buttonkiri: TSpeedButton;
+    Shape1: TShape;
     SpeedButton1: TSpeedButton;
     SpeedButton2: TSpeedButton;
     SpinEdit1: TSpinEdit;
@@ -566,7 +567,7 @@ procedure TForm1.Image1MouseDown(Sender: TObject; Button: TMouseButton;
 begin
   x0:=X;
   y0:=Y;
-  Image1.Canvas.MoveTo(X/2,Y/2);
+  Image1.Canvas.MoveTo(340,405);
   if (tool='pensil') or (tool='penghapus') then
   begin
       Image1.Canvas.MoveTo(X,Y);

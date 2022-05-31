@@ -1,12 +1,12 @@
 object Form1: TForm1
-  Left = 882
+  Left = 982
   Height = 834
-  Top = 58
-  Width = 841
+  Top = 74
+  Width = 840
   BorderStyle = bsSingle
   Caption = 'Proyek Grafkom'
   ClientHeight = 834
-  ClientWidth = 841
+  ClientWidth = 840
   Color = clMoneyGreen
   OnActivate = FormActivate
   Position = poDesktopCenter
@@ -1566,6 +1566,12 @@ object Form1: TForm1
     Width = 46
     Caption = 'Shearing'
     ParentColor = False
+  end
+  object Shape1: TShape
+    Left = 482
+    Height = 5
+    Top = 419
+    Width = 5
   end
   object ColorDialog1: TColorDialog
     Color = clBlack

@@ -29,6 +29,7 @@ type
     OpenDialog1: TOpenDialog;
     SaveDialog1: TSaveDialog;
     buttonkiri: TSpeedButton;
+    Shape1: TShape;
     SpeedButton1: TSpeedButton;
     SpeedButton2: TSpeedButton;
     SpinEdit1: TSpinEdit;
